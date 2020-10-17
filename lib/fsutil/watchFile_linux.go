@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/Symantec/Dominator/lib/log"
-	"gopkg.in/fsnotify/fsnotify.v0"
+	"github.com/fsnotify/fsnotify"
 )
 
 var (
