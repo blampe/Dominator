@@ -1,24 +1,24 @@
 all:
-	go install github.com/Symantec/Dominator/cmd/...
+	go install cmd/...
 	@cd c; make
 
 build-darwin:
-	(GOOS=darwin go build github.com/Symantec/Dominator/cmd/*)
+	(GOOS=darwin go build cmd/...)
 
 build-linux:
-	(GOOS=linux go build github.com/Symantec/Dominator/cmd/*)
+	(GOOS=linux go build cmd/...)
 
 build-windows:
-	(GOOS=windows go build github.com/Symantec/Dominator/cmd/*)
+	(GOOS=windows go build cmd/...)
 
 install-darwin:
-	(GOOS=darwin go install github.com/Symantec/Dominator/cmd/*)
+	(GOOS=darwin go install cmd/...)
 
 install-linux:
-	(GOOS=linux go install github.com/Symantec/Dominator/cmd/*)
+	(GOOS=linux go install cmd/...)
 
 install-windows:
-	(GOOS=windows go install github.com/Symantec/Dominator/cmd/*)
+	(GOOS=windows go install cmd/...)
 
 dominator.tarball:
 	@./scripts/make-tarball dominator -C $(ETCDIR) ssl
@@ -51,7 +51,7 @@ mdbd.tarball:
 
 subd.tarball:
 	@cd c; make
-	@./scripts/make-tarball subd -C $(GOPATH) bin/run-in-mntns \
+	@./scripts/make-tarball subd -C bin/run-in-mntns \
 		-C $(ETCDIR) ssl
 
 
@@ -64,5 +64,5 @@ format-imports:
 
 test:
 	@find * -name '*_test.go' |\
-	sed -e 's@^@github.com/Symantec/Dominator/@' -e 's@/[^/]*$$@@' |\
+	sed -e 's@^@@' -e 's@/[^/]*$$@@' |\
 	sort -u | xargs go test
